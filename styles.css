@@ -1,4 +1,23 @@
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-top: 30px;
+}
 
+.photo-item {
+    text-align: center;
+}
+
+.photo-item h2 {
+    margin-bottom: 15px;
+}
+
+.photo-item img {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+}
 
 /* Main collage container */
 .collage {
