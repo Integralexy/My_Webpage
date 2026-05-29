@@ -1,24 +1,19 @@
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-    margin-top: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    border: 3px solid red;
 }
 
 .photo-item {
+    border: 2px solid blue;
     text-align: center;
 }
 
-.photo-item h2 {
-    margin-bottom: 15px;
-}
-
 .photo-item img {
-    width: 500px;
-    max-width: 100%;
+    width: 300px;
     height: auto;
 }
-
 /* Main collage container */
 .collage {
     display: grid;
