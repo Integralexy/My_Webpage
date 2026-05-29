@@ -1,3 +1,50 @@
+
+
+/* Main collage container */
+.collage {
+    display: grid;
+
+    /* Responsive columns */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    /* Base row height */
+    grid-auto-rows: 180px;
+
+    /* Space between images */
+    gap: 10px;
+
+    /* Space around page edges */
+    padding: 10px;
+
+    box-sizing: border-box;
+}
+
+/* Images */
+.collage img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    display: block;
+}
+
+/* Different image shapes */
+.wide {
+    grid-column: span 2;
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
 .imageflex {
   display: flex;
   align-items: flex-start;
