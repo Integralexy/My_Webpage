@@ -56,4 +56,60 @@
     Fill in these values:
       data-repo   = your images repo
       data-folder = folder inside that repo holding the mushroom photos
-      data-branch = usually
+      data-branch = usually "main"
+  -->
+  <div class="photo-collage"
+       id="collage"
+       data-repo="Integralexy/Images"
+       data-folder="mushroom"
+       data-branch="main"></div>
+  <p class="photo-status" id="collage-status">Loading photos…</p>
+
+  <script>
+    (async function () {
+      const el = document.getElementById('collage');
+      const status = document.getElementById('collage-status');
+      const { repo, folder = '', branch = 'main' } = el.dataset;
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`
+        );
+        if (!res.ok) throw new Error('GitHub returned ' + res.status);
+        const files = await res.json();
+
+        const images = files
+          .filter((f) => f.type === 'file' && /\.(jpe?g|png|gif|webp|avif)$/i.test(f.name))
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+        if (images.length === 0) {
+          status.textContent = 'No photos yet.';
+          return;
+        }
+
+        images.forEach((f) => {
+          const link = document.createElement('a');
+          link.href = f.download_url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+
+          const img = document.createElement('img');
+          img.src = f.download_url;
+          img.alt = f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+          img.loading = 'lazy';
+
+          link.appendChild(img);
+          el.appendChild(link);
+        });
+
+        status.remove();
+      } catch (err) {
+        console.error(err);
+        status.textContent =
+          'Could not load photos. Check the repo and folder names, or try again in a few minutes.';
+      }
+    })();
+  </script>
+
+</body>
+</html>
