@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-
-  
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mushrooms</title>
-  <link rel="stylesheet" href="../../styles.css">
-</head> 
- 
- 
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    /* Collage: columns adjust automatically to screen width and image count */
+    .photo-collage {
+      display: block;
+      column-width: 260px;
+      column-gap: 12px;
+      margin-top: 24px;
+    }
+    .photo-collage a {
+      display: block;
+      margin-bottom: 12px;
+      break-inside: avoid;
+    }
+    .photo-collage img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      transition: opacity 0.2s;
+    }
+    .photo-collage img:hover {
+      opacity: 0.88;
+    }
+    .photo-status {
+      text-align: center;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
 <body style="margin: 100px; background-color: #CBD4CB;">
 
-  <h1 style="text-align: center;"> Seattle Mushrooms </h1>
+  <h1 style="text-align: center;">Seattle Mushrooms</h1>
 
   <hr />
-  
 
-<div class="nav">
-    <a href="../../index.html" title="Home">Home</a>
-    <a href="../../Research.html" title="Research">Research</a>
-    <a href="../../CV_2024.pdf"> CV </a>
-    <a href="../../Teaching/Teaching.html" title="Teaching">Teaching</a>
-    <a href="../Photos.html">Photos</a>
-</div>
+  <div class="nav">
+    <a href="../index.html" title="Home">Home</a>
+    <a href="../Research.html" title="Research">Research</a>
+    <a href="../CV_2024.pdf">CV</a>
+    <a href="../Teaching/Teaching.html" title="Teaching">Teaching</a>
+    <a href="../Photos/Photos.html" title="Photos">Photos</a>
+  </div>
 
-<hr />
+  <hr />
 
-
- 
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="collage">
-    <img class="big" src="img1.jpg">
-    <img src="img2.jpg">
-    <img class="tall" src="img3.jpg">
-    <img src="img4.jpg">
-    <img class="wide" src="img5.jpg">
-    <img src="img6.jpg">
-    <img src="img7.jpg">
-    <img class="tall" src="img8.jpg">
-    <img src="img9.jpg">
-    <img src="img10.jpg">
-</div>
-
-</body>
-</html>
-  
-</body>
-</html>
+  <!--
+    Fill in these values:
+      data-repo   = your images repo
+      data-folder = folder inside that repo holding the mushroom photos
+      data-branch = usually
