@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dogs</title>
+  <link rel="stylesheet" href="../../styles.css">
+
+  <style>
+    /* Collage: columns adjust automatically to screen width and image count */
+    .photo-collage {
+      display: block;
+      column-width: 260px;
+      column-gap: 12px;
+      margin-top: 24px;
+    }
+    .photo-collage a {
+      display: block;
+      margin-bottom: 12px;
+      break-inside: avoid;
+    }
+    .photo-collage img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      transition: opacity 0.2s;
+    }
+    .photo-collage img:hover {
+      opacity: 0.88;
+    }
+    .photo-status {
+      text-align: center;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body style="margin: 100px; background-color: #CBD4CB;">
+
+  <h1 style="text-align: center;">Husky Den</h1>
+
+  <hr />
+
+  <div class="nav">
+    <a href="../index.html" title="Home">Home</a>
+    <a href="../Research.html" title="Research">Research</a>
+    <a href="../CV_2024.pdf">CV</a>
+    <a href="../Teaching/Teaching.html" title="Teaching">Teaching</a>
+    <a href="Photos.html">Photos</a>
+  </div>
+
+  <hr />
+
+  <!--
+    Set these three values:
+      data-repo   = YOUR-USERNAME/YOUR-IMAGE-REPO
+      data-folder = folder inside that repo holding this page's images
+                    (leave as "" if the images are at the top level)
+      data-branch = usually "main"
+  -->
+  <div class="photo-collage"
+       id="collage"
+       data-repo="YOUR-USERNAME/YOUR-IMAGE-REPO"
+       data-folder="dogs"
+       data-branch="main"></div>
+  <p class="photo-status" id="collage-status">Loading photos…</p>
+
+  <script>
+    (async function () {
+      const el = document.getElementById('collage');
+      const status = document.getElementById('collage-status');
+      const { repo, folder = '', branch = 'main' } = el.dataset;
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`
+        );
+        if (!res.ok) throw new Error('GitHub returned ' + res.status);
+        const files = await res.json();
+
+        const images = files
+          .filter((f) => f.type === 'file' && /\.(jpe?g|png|gif|webp|avif)$/i.test(f.name))
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+        if (images.length === 0) {
+          status.textContent = 'No photos yet.';
+          return;
+        }
+
+        images.forEach((f) => {
+          const link = document.createElement('a');
+          link.href = f.download_url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+
+          const img = document.createElement('img');
+          img.src = f.download_url;
+          img.alt = f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+          img.loading = 'lazy';
+
+          link.appendChild(img);
+          el.appendChild(link);
+        });
+
+        status.remove();
+      } catch (err) {
+        console.error(err);
+        status.textContent =
+          'Could not load photos. Check the repo and folder names, or try again in a few minutes.';
+      }
+    })();
+  </script>
+
+</body>
+</html>
