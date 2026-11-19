@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+  
+<head>
+  <meta charset="UTF-8">
+  <title>Rep Theory WDRP</title>
+  <link rel="stylesheet" href="../../styles.css">
 
+  <style>
+    :root {
+      --pair-gap: 30px;     /* space between the two side-by-side iframes */
+      --figure-gap: 60px;   /* space between the first figure and the pair figure */
+    }
+
+    figure.demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      padding: 15px;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      max-width: fit-content;
+    }
+
+    figure.demo + figure.demo {
+      margin-top: var(--figure-gap);
+    }
+
+    figure.demo iframe {
+      border: 1px solid #e4e4e4;
+      border-radius: 4px;
+    }
+
+    .iframe-row {
+      display: flex;
+      gap: var(--pair-gap);
+      justify-content: center;
+      flex-wrap: wrap;      /* stacks the two iframes on narrow screens */
+    }
+
+    figure.demo figcaption {
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+  
+
+<body style="margin: 100px; background-color: #CBD4CB;">
+
+  <h1 style="text-align: center;"> Collected Notes </h1>
+
+  <hr />
+  
+<div class="nav">
+    <a href="../../index.html" title="Home">Home</a>
+    <a href="../../Research.html" title="Research">Research</a>
+    <a href="../../CV_2024.pdf"> CV </a>
+    <a href="../Teaching.html" title="Teaching">Notes</a>
+    <a href="../../Photos/Photos.html">Photos</a>
+</div>
+  <hr />
+
+<h2 style = "text-align: center;">Representation Theory of Finite Groups</h2>
+  <p>This reading group was done with two undergraduates during Spring 2026 as part of the <a href = "https://sites.uw.edu/wdrp/">WDRP</a>. The description of the project can be found <a href = "https://sites.uw.edu/wdrp/spring-2026/#:~:text=Smooth%20Groups%20and%20Linear%20Algebra">here</a>. This project was designed with the intent to develop representation theory of the classical Lie groups and thier Lie algebras. Additionally, based on the interests of the undergraduate participants, we studied some applications of SO(3) to both configuration spaces in robotics and to convolutional neural networks and equivariant graph neural networks in machine learning. </p>
+
+  <p> The main references we used were:</p>
+  <div class="link-column">
+    <p><a href = "https://link.springer.com/book/10.1007/978-0-387-78214-0"><u> "Naive Lie Theory" </u></a> by John Stillwell</p>
+    <p><a href = "https://bookstore.ams.org/stml-79/"><u> Matrix Groups for Undergraduates (Exercises) </u></a> by Kristopher Tapp</p>
+    <p><a href = "https://www.degruyterbrill.com/document/doi/10.1515/9783110499506/html?srsltid=AYCX9vL8lFOjv0QKqb2v9DEmggyc86EpYYL6PJlcTqYXrMFgMQvLLYRC"> <u> "Lie Group Machine Learning" </u></a> by Fanzhang Li , Li Zhang and Zhao Zhang</p>
+    <p><a href = "https://www.cambridge.org/core/books/modern-robotics/57C3BB1C6D5CB40320FA96E5FA3BCEC6"> <u> "Modern Robotics: Planning, Mechanics, and Control" </u></a> by Kevin M. Lynch</p>
+  </div>
+
+  <p> Some other useful references we referenced on occassion:</p>
+
+  <div class="link-column">
+    <p><a href = "https://link.springer.com/book/10.1007/978-3-319-13467-3"> <u> "Lie Groups, Lie Algebras, and Representations" </u></a> by Brian C. Hall</p>
+    <p><a href = "https://link.springer.com/chapter/10.1007/1-84628-490-2_1"> <u> "Introduction to Lie Algebras"</u> </a> by Karin Erdmann & Mark J. Wildon</p>
+  </div>
+
+
+  <div>
+    <h3 style="text-align: center;"><a href="Schedule.pdf"><u>  Weekly Outline </u> </a></h3>
+  </div>
+
+
+
+  <p> This was a very heavily student directed project, so any plans I originally designed for this project were ill-suited. Moreover, outside of the references above, any specific notes shared from the <a href = "../Representation Theory/RepThy.html"></a> WDRP project.</p>
+  
+</body>
+</html>
